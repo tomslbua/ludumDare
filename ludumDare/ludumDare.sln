@@ -1,6 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2017
+# Visual Studio 15
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ludumDare", "ludumDare.csproj", "{0FB30167-ED8E-2BC8-6C33-AE5385255CBE}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ludumDare.Editor", "ludumDare.Editor.csproj", "{B081F831-C434-F9C9-263C-BE065C65B293}"
