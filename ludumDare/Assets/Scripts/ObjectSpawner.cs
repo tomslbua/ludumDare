@@ -4,27 +4,28 @@ using UnityEngine;
 
 public class ObjectSpawner : MonoBehaviour {
 
+    private float spawnTimer = 10;
+
     public int numObjects = 10;
     public GameObject prefab;
 
+    public SphereCollider sphereCol;
+    public GameObject spawned;
+
     void Start()
     {
-        Vector3 center = transform.position;
-        for (int i = 0; i < numObjects; i++)
-        {
-            Vector3 pos = RandomCircle(center, 5.0f);
-            Quaternion rot = Quaternion.FromToRotation(Vector3.forward, center - pos);
-            Instantiate(prefab, pos, rot);
-        }
-    }
+        var r = sphereCol.radius;
 
-    Vector3 RandomCircle(Vector3 center, float radius)
-    {
-        float ang = Random.value * 360;
-        Vector3 pos;
-        pos.x = center.x + radius * Mathf.Sin(ang * Mathf.Deg2Rad);
-        pos.y = center.y + radius * Mathf.Cos(ang * Mathf.Deg2Rad);
-        pos.z = center.z;
-        return pos;
+        for (int i = 0; i < 100; i++)
+        {
+            var spawned = Instantiate(this.spawned) as GameObject;
+
+            var x = Random.Range(-1f, 1f);
+            var y = Random.Range(-1f, 1f);
+            var z = Random.Range(-1f, 1f);
+
+            var vec = new Vector3(x, y, z).normalized * r;
+            spawned.transform.position = vec;
+        }
     }
 }
