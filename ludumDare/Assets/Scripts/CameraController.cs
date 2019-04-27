@@ -9,14 +9,23 @@ public class CameraController : MonoBehaviour {
     
     private void OnMouseDrag()
     {
-        
-        float rotX = Input.GetAxis("Mouse X") * speed * Mathf.Deg2Rad;
-        float rotY= Input.GetAxis("Mouse Y") * speed * Mathf.Deg2Rad;
 
-        
+        float rotX = Input.GetAxis("Mouse X") * speed * Mathf.Deg2Rad;
+        float rotY = Input.GetAxis("Mouse Y") * speed * Mathf.Deg2Rad;
+
+
 
         transform.RotateAround(Vector3.up, -rotX);
-        transform.RotateAround(Vector3.forward,-rotY);
+        transform.RotateAround(Vector3.right, rotY);
+
+
+        //float rotX = Input.GetAxis("Mouse X") * speed * Mathf.Deg2Rad;
+        //float rotY = Input.GetAxis("Mouse Y") * speed * Mathf.Deg2Rad;
+
+
+
+        //transform.RotateAround(Vector3.up, -rotX);
+        //transform.RotateAround(Vector3.right, rotY);
     }
 
 }
