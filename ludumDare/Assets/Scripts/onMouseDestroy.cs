@@ -1,21 +1,28 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.UI;
 public class onMouseDestroy : MonoBehaviour {
 
     ObjectSpawner1 objectspawner;
-
+   
 
     private void Start()
     {
         objectspawner = ObjectSpawner1.Instance;
+        
     }
 
-    
+    private void Update()
+    {
+       
+    }
+
+
     private void OnMouseDown()
     {
         if (gameObject.tag == "spawn") {
+            objectspawner.holzcheck = false;
             Destroy(gameObject);
 
             objectspawner.treeTracker--;
@@ -27,7 +34,7 @@ public class onMouseDestroy : MonoBehaviour {
         if (collision.gameObject.tag == "Objects")
         {
             Destroy(gameObject);
-
+            
             objectspawner.treeTracker--;
         }
     }
