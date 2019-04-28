@@ -4,18 +4,31 @@ using UnityEngine;
 
 public class onMouseDestroy : MonoBehaviour {
 
+    ObjectSpawner1 objectspawner;
+
+
+    private void Start()
+    {
+        objectspawner = ObjectSpawner1.Instance;
+    }
+
+    
     private void OnMouseDown()
     {
-            RaycastHit hit;
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        if (gameObject.tag == "spawn") {
+            Destroy(gameObject);
 
-            if (Physics.Raycast(ray, out hit))
-            {
-                BoxCollider bc = hit.collider as BoxCollider;
-                if (bc != null)
-                {
-                    Destroy(bc.gameObject);
-                }
-            }
+            objectspawner.treeTracker--;
         }
+        }
+
+    private void OnTriggerEnter(Collider collision)
+    {
+        if (collision.gameObject.tag == "Objects")
+        {
+            Destroy(gameObject);
+
+            objectspawner.treeTracker--;
+        }
+    }
 }

@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class ObjectSpawner1 : MonoBehaviour
 {
+    public float timer = 3;
+
     public float objNum;
     public GameObject hochhaus;
     public SphereCollider sc;
@@ -11,16 +13,39 @@ public class ObjectSpawner1 : MonoBehaviour
     public GameObject einfamilienhaus;
     public GameObject supermarkt;
 
+    public int maxTrees = 20;
+    public int treeTracker = 4;
+
+    #region Singleton
+
+    public static ObjectSpawner1 Instance;
 
     private void Awake()
     {
-
-
+        Instance = this;
     }
+    #endregion
 
     void Start()
     {
         sc = GetComponent<SphereCollider>();
+
+    }
+
+    private void Update()
+    {
+        timer -= Time.deltaTime;
+        if(treeTracker < 0)
+        {
+            treeTracker = 0;
+        }
+        if (timer <= 0)
+        {
+            createTrees();
+            timer = 3;
+        }
+        
+        
     }
 
     public void Hochhaus()
@@ -28,7 +53,7 @@ public class ObjectSpawner1 : MonoBehaviour
         
             Vector3 origin = this.transform.position / 0.5f;
 
-            Vector3 onPlanet = Random.onUnitSphere * (sc.radius * transform.localScale.x + 6);
+            Vector3 onPlanet = Random.onUnitSphere * (sc.radius * transform.localScale.x +6);
 
 
             GameObject newGO = Instantiate(hochhaus, onPlanet, Quaternion.identity) as GameObject;
@@ -37,7 +62,7 @@ public class ObjectSpawner1 : MonoBehaviour
 
 
 
-        newGO.transform.SetParent(this.transform);
+            newGO.transform.SetParent(this.transform);
             newGO.transform.LookAt(this.transform.position);
             newGO.transform.rotation = newGO.transform.rotation * Quaternion.Euler(-90, 0, 90);
             
@@ -89,5 +114,23 @@ public class ObjectSpawner1 : MonoBehaviour
        
 
     }
+
+    public void createTrees() {
+
+        if (treeTracker < maxTrees)
+        {
+            treeTracker++;
+
+            Vector3 onPlanet = Random.onUnitSphere * (sc.radius * transform.localScale.x -1);
+
+            GameObject newGO = Instantiate(supermarkt, onPlanet, Quaternion.identity) as GameObject;
+            newGO.transform.SetParent(this.transform);
+            newGO.transform.LookAt(this.transform.position);
+            newGO.transform.rotation = newGO.transform.rotation * Quaternion.Euler(90, -90, 90);
+        }     
+
+    }
+
+  
 
 }
