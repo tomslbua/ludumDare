@@ -6,13 +6,13 @@ public class CollisionScript : MonoBehaviour
 {
    
     bool script=true;
-    
+    ObjectSpawner1 objectspawner;
     
     
 
     private void Start()
     {
-        
+        objectspawner = ObjectSpawner1.Instance;
         
     }
 
@@ -29,6 +29,7 @@ public class CollisionScript : MonoBehaviour
 
 
                 Destroy(gameObject);
+                objectspawner.respawn(name);
                 Debug.Log("trigger enter!");
             }
         }

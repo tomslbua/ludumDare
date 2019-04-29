@@ -5,7 +5,9 @@ using UnityEngine.UI;
 public class onMouseDestroy : MonoBehaviour {
 
     ObjectSpawner1 objectspawner;
-   
+    public AudioSource baumweg;
+ 
+
 
     private void Start()
     {
@@ -23,11 +25,15 @@ public class onMouseDestroy : MonoBehaviour {
     {
         if (gameObject.tag == "spawn") {
             objectspawner.holzcheck = false;
+            
+           
             Destroy(gameObject);
 
             objectspawner.treeTracker--;
         }
         }
+
+   
 
     private void OnTriggerEnter(Collider collision)
     {

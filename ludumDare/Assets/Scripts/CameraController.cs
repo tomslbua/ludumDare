@@ -7,6 +7,7 @@ public class CameraController : MonoBehaviour {
 
     float speed = 10;
     
+    
     private void OnMouseDrag()
     {
 

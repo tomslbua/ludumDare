@@ -72,9 +72,9 @@ public class ObjectSpawner1 : MonoBehaviour
         {
             life -= 3*hochhaustracker;
             life -= 10 * fabriktracker;
-            life -= 1 * einfamilienhaustracker;
-            life -= 1 * supermarkttracker;
-            life += 1.5f * treeTracker;
+            life -= 3 * einfamilienhaustracker;
+            life -= 1.5f * supermarkttracker;
+            life += 1* treeTracker;
             timer1 = 6;
             
         }
@@ -206,6 +206,26 @@ public class ObjectSpawner1 : MonoBehaviour
 
     }
 
-  
+    public void respawn(string name)
+    {
+
+        if (name.Contains("Hochhaus"))
+        {
+            Hochhaus();
+        }
+        if (name.Contains("Fabrik"))
+        {
+            Fabrik();
+        }
+        if (name.Contains("Market"))
+        {
+            Supermarkt();
+        }
+        if (name.Contains("Family"))
+        {
+            Einfamilienhaus();
+        }
+
+    }
 
 }
