@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class ObjectSpawner1 : MonoBehaviour
 {
-    public float timer = 3;
+    public float timer = 1;
     public Slider lifevalue;
     public float objNum;
     public GameObject hochhaus;
@@ -21,10 +21,14 @@ public class ObjectSpawner1 : MonoBehaviour
     public int maxTrees = 20;
     public int treeTracker = 4;
     public float timer1=6;
+    public float timer2 = 1;
     public float life=100;
     public bool holzcheck = true;
     float holz=0;
+    float holza;
     public Text holzt;
+    public Text holzadd;
+   
     #region Singleton
 
     public static ObjectSpawner1 Instance;
@@ -43,16 +47,18 @@ public class ObjectSpawner1 : MonoBehaviour
 
     private void Update()
     {
+        holzt.text = holz.ToString();
         lifevalue.value = life;
         timer -= Time.deltaTime;
-        if(treeTracker < 0)
+        timer2 -= Time.deltaTime;
+        if (treeTracker < 0)
         {
             treeTracker = 0;
         }
         if (timer <= 0)
         {
             createTrees();
-            timer = 3;
+            timer = 1;
         }
 
         if (life > 100)
@@ -67,20 +73,33 @@ public class ObjectSpawner1 : MonoBehaviour
             life -= 3*hochhaustracker;
             life -= 10 * fabriktracker;
             life -= 1 * einfamilienhaustracker;
-            life += 1 * supermarkttracker;
-            life += 3 * treeTracker;
+            life -= 1 * supermarkttracker;
+            life += 1.5f * treeTracker;
             timer1 = 6;
             
         }
         if (holzcheck == false)
         {
-            holz += Random.Range(5, 20);
+            holza = Random.Range(5, 20);
+            holz += holza;
             holzcheck = true;
+            
+            holzadd.text = "+" + holza.ToString();
+            holzadd.enabled = true;
+            timer2 = 1;
         }
 
-        holzt.text = holz.ToString();
+        if (timer2 <= 0)
+        {
+            holzadd.enabled = false;
+            
+        }
         
+        
+
+
     }
+
 
     public void Hochhaus()
     {
@@ -102,7 +121,7 @@ public class ObjectSpawner1 : MonoBehaviour
             newGO.transform.SetParent(this.transform);
             newGO.transform.LookAt(this.transform.position);
             newGO.transform.rotation = newGO.transform.rotation * Quaternion.Euler(-90, 0, 90);
-            holz -= 600;
+            holz -= 10;
         }
              
             
@@ -122,7 +141,7 @@ public class ObjectSpawner1 : MonoBehaviour
             newGO.transform.SetParent(this.transform);
             newGO.transform.LookAt(this.transform.position);
             newGO.transform.rotation = newGO.transform.rotation * Quaternion.Euler(0, 180, 0);
-            holz -= 1200;
+            holz -= 10;
         }
         
         
@@ -130,7 +149,7 @@ public class ObjectSpawner1 : MonoBehaviour
     }
     public void Einfamilienhaus()
     {
-        if (holz >= 80)
+        if (holz >= 60)
         {
 
             einfamilienhaustracker++;
@@ -143,7 +162,7 @@ public class ObjectSpawner1 : MonoBehaviour
             newGO.transform.SetParent(this.transform);
             newGO.transform.LookAt(this.transform.position);
             newGO.transform.rotation = newGO.transform.rotation * Quaternion.Euler(90, -90, 90);
-            holz -= 80;
+            holz -= 60;
           
         }
         

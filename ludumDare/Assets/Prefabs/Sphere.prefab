@@ -23,7 +23,7 @@ GameObject:
   - component: {fileID: 135009787209346986}
   - component: {fileID: 23133885370716104}
   - component: {fileID: 114346087611351196}
-  - component: {fileID: 114193314082498060}
+  - component: {fileID: 114189939837135766}
   m_Layer: 0
   m_Name: Sphere
   m_TagString: kugel
@@ -37,8 +37,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1028036949353750}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0, y: -0, z: 0}
   m_LocalScale: {x: 100, y: 100, z: 100}
   m_Children: []
   m_Father: {fileID: 0}
@@ -85,7 +85,7 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1028036949353750}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
---- !u!114 &114193314082498060
+--- !u!114 &114189939837135766
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -107,13 +107,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 99272cbe765f8db43bd41f41389556ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  timer: 3
+  lifevalue: {fileID: 0}
   objNum: 10
   hochhaus: {fileID: 1295403307236758, guid: f3509a1fc68c7ed48b933f2ef6bb435a, type: 2}
   sc: {fileID: 135009787209346986}
-  fabrik: {fileID: 0}
-  einfamilienhaus: {fileID: 1040772108895708, guid: c2fedc8329df2b64baac9f0a4a3eb5ad,
+  fabrik: {fileID: 1808065723180640, guid: 478ee3d8aef36aa44830baefcd0b494c, type: 2}
+  einfamilienhaus: {fileID: 1106757061551248, guid: b14b2b82754454840b7d6cbbb466024d,
     type: 2}
-  supermarkt: {fileID: 1040772108895708, guid: c2fedc8329df2b64baac9f0a4a3eb5ad, type: 2}
+  supermarkt: {fileID: 1578456602434422, guid: e90acc20fba83cd42bd4b65d79153bf7, type: 2}
+  trees: {fileID: 1249895324564164, guid: ca737f1b7ad8e7e48a016edc9b51f935, type: 2}
+  hochhaustracker: 0
+  fabriktracker: 0
+  einfamilienhaustracker: 0
+  supermarkttracker: 0
+  maxTrees: 20
+  treeTracker: 4
+  timer1: 6
+  life: 100
+  holzcheck: 1
+  holzt: {fileID: 0}
+  holzadd: {fileID: 0}
 --- !u!135 &135009787209346986
 SphereCollider:
   m_ObjectHideFlags: 1
